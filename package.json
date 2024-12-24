@@ -1,0 +1,77 @@
+{
+	"name": "elitbuzz-sms",
+	"version": "1.0.0",
+	"description": "Helper plugin to send SMS from ElitBuzz",
+	"author": "Kapil Paul <kapilpaul007@gmail.com>",
+	"license": "GPL-3.0",
+	"keywords": [
+		"wordpress",
+		"woocommerce",
+		"sms",
+		"bulksms",
+		"bangladesh"
+	],
+	"homepage": "https://github.com/kapilpaul/elitbuzz-sms",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kapilpaul/elitbuzz-sms.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kapilpaul/elitbuzz-sms/issues"
+	},
+	"scripts": {
+		"clean": "rm -rf ./dist",
+		"build:dev": "webpack --mode development",
+		"build": "NODE_ENV=production webpack --mode production",
+		"start": "NODE_ENV=development webpack-dev-server --config=./webpack.config.js --hot --mode development --allowed-hosts all",
+		"make-pot": "wp i18n make-pot --exclude='dist,node_modules,vendors' . languages/dc-bkash.pot",
+		"lint-js": "eslint assets/src/",
+		"precommit": "npm run lint-js && npm run make-pot",
+		"zip": "node build --zip",
+		"pre-release": "npm run make-pot && npm run build",
+		"release": "npm run build && node build"
+	},
+	"dependencies": {
+		"@wordpress/api-fetch": "^7.14.0",
+		"@wordpress/components": "^29.0.0",
+		"create-react-class": "^15.7.0",
+		"lodash": "^4.17.21",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-motion": "^0.4.2",
+		"react-paginate": "^8.2.0",
+		"react-router": "^6.22.3",
+		"react-router-dom": "^6.22.3",
+		"react-toastify": "^11.0.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.23.5",
+		"@babel/preset-env": "^7.23.5",
+		"@babel/preset-react": "^7.23.3",
+		"@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin#release/v0.6.0",
+		"@wordpress/eslint-plugin": "^17.12.0",
+		"@wordpress/i18n": "^4.55.0",
+		"autoprefixer": "^10.4.19",
+		"babel-loader": "^9.2.1",
+		"css-loader": "^6.11.0",
+		"eslint": "^8.57.0",
+		"mini-css-extract-plugin": "^2.7.6",
+		"node-wp-i18n": "^1.2.7",
+		"path-browserify": "^1.0.1",
+		"postcss": "^8.4.49",
+		"postcss-loader": "^8.1.1",
+		"postcss-pxtorem": "^6.1.0",
+		"postcss-scss": "^4.0.9",
+		"react-refresh": "^0.16.0",
+		"sass": "^1.83.0",
+		"sass-loader": "^14.2.1",
+		"style-loader": "^4.0.0",
+		"url-loader": "^4.1.1",
+		"webpack": "^5.97.1",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.0"
+	},
+	"optionalDependencies": {
+		"sass-embedded": "^1.70.0"
+	}
+}

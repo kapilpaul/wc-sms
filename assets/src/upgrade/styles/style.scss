@@ -1,0 +1,64 @@
+$primary-color: #e2136e;
+
+#elitbuzz-sms-upgrade-notice-container {
+  position: relative;
+}
+
+#elitbuzz-sms-upgrade-notice {
+  padding: 0px 10px 14px 0px;
+}
+
+#elitbuzz-sms-upgrade-notice::before {
+  background-image: url('/assets/images/elitbuzzsms_logo.png');
+  background-repeat: no-repeat;
+  background-position: right 2px;
+  opacity: 0.2;
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 0;
+  z-index: 0;
+  width: 25%;
+  height: 100%;
+}
+
+.elitbuzz-sms-notice-info {
+  border-left-color: $primary-color !important;
+}
+
+.elitbuzz-sms-notice-info-hide {
+  display: none;
+}
+
+.text-elitbuzzsms {
+  color: $primary-color;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.bg-elitbuzzsms {
+  background-color: $primary-color !important;
+  border-width: 0 !important;
+}
+
+.components-button.bg-elitbuzzsms:hover {
+  @extend .text-white;
+}
+
+.components-button {
+  &.bg-elitbuzzsms {
+    &.is-busy {
+      background-image: linear-gradient(
+        -45deg,
+        #fafafa 28%,
+        $primary-color 0,
+        $primary-color 72%,
+        #fafafa 0
+      );
+      outline: 0px solid transparent;
+      box-shadow: 0 0 0;
+    }
+  }
+}

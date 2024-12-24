@@ -1,0 +1,36 @@
+@use '../../styles/mixin.scss';
+
+.settings_page {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.Toastify__toast-container--top-right {
+    top: 50px;
+}
+
+.single_settings_field {
+    width: 500px;
+
+    @include mixin.mobile {
+        width: 100%;
+    }
+
+    .widefat {
+        height: 40px;
+        padding: 0 10px;
+    }
+
+    p.label {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+}
+
+.save_btn {
+    margin-top: 10px;
+    border-radius: 4px;
+    padding: 10px 25px;
+}
