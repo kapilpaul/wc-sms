@@ -30,8 +30,8 @@ class ElitBuzz {
 		$api_key   = ebs_get_settings_option( 'api_key' );
 		$sender_id = ebs_get_settings_option( 'sender_id' );
 
-		if ( ! $api_key || ! $sender_id ) {
-			return new \WP_Error( 'elitbuzz_send_sms_error', __( 'Credentials missing!', 'elitbuzz-sms' ) );
+		if ( ! $api_key || ! $sender_id || empty( $to ) || empty( $content ) ) {
+			return new \WP_Error( 'elitbuzz_send_sms_error', __( 'Credentials or data missing!', 'elitbuzz-sms' ) );
 		}
 
 		$data = [

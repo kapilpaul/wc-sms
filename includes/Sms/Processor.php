@@ -28,6 +28,10 @@ class Processor {
 	 * @return void|\WP_Error
 	 */
 	public function send_sms( $to, $content, \WC_Order $order ) {
+		if ( empty( $to ) || empty( $content ) ) {
+			return new \WP_Error( 'elitbuzz_send_sms_error', __( 'Recipient number or content missing!', 'elitbuzz-sms' ) );
+		}
+
 		$elitbuzz = new ElitBuzz();
 		$response = $elitbuzz->send_sms( $content, $to );
 
@@ -55,7 +59,7 @@ class Processor {
 			'customer_id'     => $order->get_customer_id(),
 			'order_id'        => $order->get_order_number(),
 			'message_content' => $content,
-			'message_id'      => $ebs_sms_id,
+			'message_id'      => $ebs_sms_id . ' ##--## original response: ' . $response,
 			'delivery_status' => 0,
 		] );
 	}

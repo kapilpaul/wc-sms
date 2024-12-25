@@ -40,7 +40,13 @@ class WooCommerce {
 		$message = str_replace( '%order_number%', $order->get_order_number(), $message );
 		$message = str_replace( '%name%', $order->get_billing_first_name(), $message );
 
-		elitbuzz_sms()->sms_processor->send_sms( $order->get_billing_phone() ,$message, $order );
+		$phone_number = $order->get_billing_phone() ? $order->get_billing_phone() : $order->get_shipping_phone();
+
+		if ( ! $phone_number ) {
+			return;
+		}
+
+		elitbuzz_sms()->sms_processor->send_sms( $phone_number, $message, $order );
 
 		return true;
 	}
